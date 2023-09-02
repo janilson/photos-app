@@ -3,18 +3,27 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Gallery</ion-title>
+    <ion-title>Galeria</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" sizeMd="3" *ngFor="let photo of photos">
-        <ion-img [src]="photo"></ion-img>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Galeria de Fotos</ion-card-title>
+      <ion-card-subtitle>Click no botão abaixo</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let photo of photos;let i = index">
+          <ion-thumbnail slot="start">
+            <ion-img [src]="photo"></ion-img>
+          </ion-thumbnail>
+          <ion-label>Foto {{i + 1}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button (click)="takePhoto()">
